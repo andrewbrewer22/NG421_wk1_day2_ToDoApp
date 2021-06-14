@@ -1,20 +1,17 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-
+<h1 align="center">{{title}}</h1>
+<input type="text" class="form-control" placeholder="Add next todo here" [(ngModel)]="todoTitle" (keyup.enter)="addTodo()"/>
+<ul align="center" class="list-group">
+    <li class="list-group-item" *ngFor="let todo of todoList">
+        <div class="view">
+          <label [ngStyle]="{'text-decoration': todo.isDone ? 'line-through' : 'none'}">{{todo.title}}</label>
+          <div class="float-right">
+              <label class="mr-2">Complete</label>
+              <input class="mr-2" type="checkbox" name="done" (click)="complete(todo)"/>
+              <label class="mr-2">{{todo.time |date: 'shortDate'}}</label>
+            <button type="button" (click)="deleteTodo(todo)" class="btn btn-danger btn-sm">Delete</button>
+          </div>
+        </div>
+      </li>
+    </ul>
 
 <router-outlet></router-outlet>
